@@ -40,6 +40,6 @@ for i in range(EPOCHS):
 
 print(theta[0],theta[1])
 plt.xlabel('Área', color= 'r')
-plt.ylabel('Precio' color ='g' )
+plt.ylabel('Precio', color ='g')
 plt.title('Precio vs. Área', color='b')
 plt.show()
