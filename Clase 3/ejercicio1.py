@@ -1,5 +1,5 @@
 import numpy as np
-# import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 import math
 
 LR = 0.0003
@@ -11,6 +11,7 @@ y = dt[:,1, None]
 
 # Estandarizar
 x = (x-np.mean(x))/np.std(x)
+y = (y-np.mean(y))/np.std(y)
 
 # Columna de 1 a X
 m = x.shape[0]
@@ -19,12 +20,14 @@ x = np.hstack((x_0,x))
 
 # Primeros valores del parametro
 theta = np.random.rand(2)
+print(theta)
+
 for i in range(EPOCHS):
     
     # Predecidos
-    y_pred = x * theta
-    err = y_pred - y
-    errx= (y_pred-y) * x[:,1,None]
+    y_pred = x @ theta
+    err = y_pred - y[0]
+    errx= (y_pred-y[0]) * x[:,1]
     
     # Derivadas parciales
     dpar0 = np.sum(err)
@@ -32,5 +35,11 @@ for i in range(EPOCHS):
     
     theta[0] -= LR * dpar0
     theta[1] -= LR * dpar1
+    
+    plt.plot(x[:,1], y_pred)
 
 print(theta[0],theta[1])
+plt.xlabel('Área', color= 'r')
+plt.ylabel('Precio' color ='g' )
+plt.title('Precio vs. Área', color='b')
+plt.show()
