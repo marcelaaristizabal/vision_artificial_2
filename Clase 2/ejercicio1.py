@@ -15,8 +15,8 @@ def translate(triangle, dx, dy):
     t = np.array([dx, dy])
     return triangle + t
 
-def scale (triangle, dx, dy):
-    s= np.array([dx, dy])
+def scale (triangle, sx, sy):
+    s = np.array([sx, sy])
     return triangle * s
 
 def rotation (triangle, angle):
